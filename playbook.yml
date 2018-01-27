@@ -5,9 +5,22 @@
   tasks:
   - name: Update apt-cache
     apt: update_cache=yes
+
   - name: Install Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'git', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre' ]
+    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre' ]
+
+  - name: Add git aliases
+    command: git config --global alias.co checkout
+  - name: Add git aliases
+    command: git config --global alias.br branch
+  - name: Add git aliases
+    command: git config --global alias.ci commit
+  - name: Add git aliases
+    command: git config --global alias.st status
+  - name: Add git aliases
+    command: git config --global alias.aa "add ."
+
 
   roles:
   - { role: gantsign.atom, become: yes  }
