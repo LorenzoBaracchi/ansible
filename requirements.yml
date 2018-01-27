@@ -5,10 +5,13 @@
 - src: mjanser.powerline
 
 # Install rvm
-- src: altermn.rvm
+- src: rvm_io.ruby
 
 # Install skype 
 - src: mhalano.skypeforlinux
 
 # Install mega
-- src: kostyrevaa.megacli
+- src: tersmitten.megacli
+
+# Install chrome
+- src: azmodude.googlechrome
