@@ -2,7 +2,7 @@
     - hosts: all
       become: true
       vars:
-        packages: [ 'git', 'curl', 'vlc', 'aptitude', 'postgresql' ]
+        packages: [ 'git', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre' ]
       tasks:
         - name: Update apt-cache
           apt: update_cache=yes

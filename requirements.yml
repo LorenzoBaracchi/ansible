@@ -1,8 +1,14 @@
-# Install atom the Ansible Galaxy
+# Install atom
 - src: gantsign.atom
 
-# Install powerine the Ansible Galaxy
+# Install powerine
 - src: mjanser.powerline
 
-# Install rvm the Ansible Galaxy
+# Install rvm
 - src: altermn.rvm
+
+# Install skype 
+- src: mhalano.skypeforlinux
+
+# Install mega
+- src: kostyrevaa.megacli
