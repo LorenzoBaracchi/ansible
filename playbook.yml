@@ -1,0 +1,30 @@
+    ---
+    - hosts: all
+      become: true
+      vars:
+        packages: [ 'git', 'curl', 'vlc', 'aptitude', 'postgresql' ]
+      tasks:
+        - name: Update apt-cache
+          apt: update_cache=yes
+        - name: Install Packages
+          apt: name={{ item }} state=latest
+          with_items: packages
+
+        - local_action:
+          command ansible-galaxy install -r requirements.yml
+
+        - name: Add spotify key
+          apt_key: id=BBEBDCB318AD50EC6865090613B00F1FD2C19886 keyserver="hkp://keyserver.ubuntu.com:80" state=present
+        - name: Add spotify repository
+          apt_repository: repo="deb http://repository.spotify.com stable non-free"
+        - name: Ensure spotify is installed
+          apt: pkg=spotify-client  state={{spotify_pkg_state}}
+
+        - name: Add Google Chrome key
+          shell: wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+        - name: Add Google Chrome repo
+          copy: content="deb http://dl.google.com/linux/chrome/deb/ stable main" dest={{apt_file}} owner=root group=root mode=644
+        - name: Update apt cache
+          apt: update_cache=yes
+        - name: Install Google Chrome
+          apt: pkg=google-chrome-stable state=installed

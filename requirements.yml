@@ -1,0 +1,8 @@
+# Install atom the Ansible Galaxy
+- src: gantsign.atom
+
+# Install powerine the Ansible Galaxy
+- src: mjanser.powerline
+
+# Install rvm the Ansible Galaxy
+- src: altermn.rvm
