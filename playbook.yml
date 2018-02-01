@@ -8,7 +8,7 @@
 
   - name: Install Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre', 'ruby' ]
+    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre', 'ruby', 'npm']
 
   - name: Add git aliases
     command: git config --global alias.co checkout
@@ -21,15 +21,20 @@
   - name: Add git aliases
     command: git config --global alias.aa "add ."
 
+  - name: Install elm" node.js package.
+    npm:
+      name: elm
+      global: yes
+
 
   roles:
   - { role: gantsign.atom, become: yes  }
   - { role: mjanser.powerline, become: yes, powerline_users: lorenzo }
-  - { role: rvm_io.ruby, 
+  - { role: rvm_io.ruby,
       become: yes,
       tags: ruby,
       rvm1_rubies: ['ruby-2.5.0'],
-      rvm1_user: 'lorenzo'  
+      rvm1_user: 'lorenzo'
     }
   - { role: mhalano.skypeforlinux, become: yes  }
   - { role: tersmitten.megacli, become: yes }
