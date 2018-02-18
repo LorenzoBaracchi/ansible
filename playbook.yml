@@ -8,7 +8,12 @@
 
   - name: Install Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre', 'ruby', 'npm', 'fonts-firacode']
+    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre', 'ruby', 'npm', 'fonts-firacode', 'python-pip', 'qt5-default']
+
+  - name: Intall aws eb cli
+    command: pip install awsebcli --upgrade --user
+    become: true
+    become_user: lorenzo
 
   - name: Add git aliases
     command: git config --global alias.co checkout
