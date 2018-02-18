@@ -6,19 +6,31 @@
   - name: Update apt-cache
     apt: update_cache=yes
 
-  - name: Install Packages
+  - name: Install Utils Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'git', 'gitk', 'curl', 'vlc', 'aptitude', 'postgresql', 'calibre', 'ruby', 'npm', 'fonts-firacode', 'python-pip' ]
+    with_items: [ 'vlc', 'aptitude', 'calibre', 'ruby', 'fonts-firacode']
+
+  - name: Install Devs Packages
+    apt: name={{ item }} state=latest
+    with_items: [ 'git', 'gitk', 'curl', 'postgresql', 'libpq-dev', 'ruby', 'npm', 'python-pip' ]
 
   - name: Install qt stuffs
     apt: name={{ item }} state=latest
     with_items: [ 'qt5-default', 'libqt5webkit5-dev', 'gstreamer1.0-plugins-base', 'gstreamer1.0-tools', 'gstreamer1.0-x' ]
 
-
   - name: Intall aws eb cli
     command: pip install awsebcli --upgrade --user
     become: true
     become_user: lorenzo
+
+  - name: export local bin
+    lineinfile:
+      dest: /home/lorenzo/.bash_profile
+      create: yes
+      line: "export PATH=~/.local/bin:$PATH"
+      state: present
+      become: true
+      become_user: lorenzo
 
   - name: Add git aliases
     command: git config --global alias.co checkout
