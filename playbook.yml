@@ -8,7 +8,7 @@
 
   - name: Install Utils Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'vlc', 'aptitude', 'calibre', 'ruby', 'fonts-firacode', 'gimp']
+    with_items: [ 'vlc', 'aptitude', 'calibre', 'ruby', 'fonts-firacode', 'gimp', 'htop' ]
 
   - name: Install Devs Packages
     apt: name={{ item }} state=latest
