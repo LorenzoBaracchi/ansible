@@ -8,7 +8,7 @@
 
   - name: Install Utils Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'vlc', 'aptitude', 'calibre', 'ruby', 'fonts-firacode']
+    with_items: [ 'vlc', 'aptitude', 'calibre', 'ruby', 'fonts-firacode', 'gimp']
 
   - name: Install Devs Packages
     apt: name={{ item }} state=latest
@@ -43,11 +43,6 @@
   - name: Add git aliases
     command: git config --global alias.aa "add ."
 
-  - name: Install elm" node.js package.
-    npm:
-      name: elm
-      global: yes
-
 
   roles:
   - { role: gantsign.atom, become: yes  }
@@ -61,3 +56,4 @@
   - { role: mhalano.skypeforlinux, become: yes  }
   - { role: tersmitten.megacli, become: yes }
   - { role: azmodude.googlechrome, become: yes  }
+  - { role: "nickjj.docker", tags: "docker" }

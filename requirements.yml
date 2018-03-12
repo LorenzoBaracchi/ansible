@@ -7,7 +7,7 @@
 # Install rvm
 - src: rvm_io.ruby
 
-# Install skype 
+# Install skype
 - src: mhalano.skypeforlinux
 
 # Install mega
@@ -15,3 +15,6 @@
 
 # Install chrome
 - src: azmodude.googlechrome
+
+# Install docker
+- src: nickjj.docker
