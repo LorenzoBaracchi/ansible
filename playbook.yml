@@ -57,3 +57,4 @@
   - { role: tersmitten.megacli, become: yes }
   - { role: azmodude.googlechrome, become: yes  }
   - { role: "nickjj.docker", tags: "docker" }
+  - { role: "KeyboardInterrupt.tilix" }

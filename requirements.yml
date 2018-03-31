@@ -18,3 +18,6 @@
 
 # Install docker
 - src: nickjj.docker
+
+# Install Tilix terminal
+- src: KeyboardInterrupt.tilix
