@@ -12,7 +12,7 @@
 
   - name: Install Devs Packages
     apt: name={{ item }} state=latest
-    with_items: [ 'git', 'gitk', 'curl', 'postgresql', 'libpq-dev', 'ruby', 'npm', 'python-pip' ]
+    with_items: [ 'git', 'gitk', 'curl', 'postgresql', 'libpq-dev', 'ruby', 'npm', 'python-pip', 'tilix' ]
 
   - name: Install qt stuffs
     apt: name={{ item }} state=latest
@@ -45,13 +45,5 @@
 
 
   roles:
-  - { role: gantsign.atom, become: yes  }
   - { role: mjanser.powerline, become: yes, powerline_users: lorenzo }
-  - { role: aeriscloud.rvm,
-      become: yes,
-      tags: ruby,
-      rvm1_rubies: ['ruby-2.5.0'],
-      rvm1_user: 'lorenzo'
-    }
-  - { role: mhalano.skypeforlinux, become: yes  }
-  - { role: "KeyboardInterrupt.tilix" }
+ 
